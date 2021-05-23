@@ -1,4 +1,4 @@
-package com.koreait.lunch.board.controller;
+package com.koreait.lunch.controller;
 
 import com.koreait.lunch.controller.MyUtils;
 import com.koreait.lunch.model.dao.BoardDAO;
@@ -42,7 +42,7 @@ public class BoardController {
 
         final String[] typelist = {"한식","양식","일식","중식","분식","카페","기타"};
         model.addAttribute("typelist",typelist);
-        MyUtils.setTemplate(model,"글 등록 | 오늘 점심 뭐먹지?","board/write");
+        MyUtils.setTemplate(model,"글 등록 | 오늘 점심 뭐먹지?","board/write",session);
         return MyUtils.TEMPLATE;
     }
 

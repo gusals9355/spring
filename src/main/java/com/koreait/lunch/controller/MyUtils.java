@@ -9,10 +9,12 @@ import javax.servlet.http.HttpSession;
 
 import com.koreait.lunch.model.dao.MemberDAO;
 import com.koreait.lunch.model.vo.MemberVO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 
 public class MyUtils {
-	
+
+
 	public static int parseStringToInt(String num) {
 		try {
 			return Integer.parseInt(num);
@@ -39,10 +41,16 @@ public class MyUtils {
 	}
 	
 	public static void reUserInfo(HttpSession session) {
-		session.setAttribute("userInfo", MemberDAO.getUserInfo(MyUtils.getLoginUserID(session)));
+		MemberVO vo = new MemberVO();
+		vo.setId(MyUtils.getLoginUserID(session));
+		@Autowired
+		MemberDAO memberDAO;
+		session.setAttribute("userInfo", memberDAO.getUserInfo(vo));
 	}
 
-	public static void setTemplate(Model model, String title, String page){
+	public static void setTemplate(Model model, String title, String page, HttpSession session){
+		if(getLoginUser(session) == null) model.addAttribute("nav","nav");
+		else model.addAttribute("nav","loginNav");
 		model.addAttribute("title",title);
 		model.addAttribute("page",page);
 	}

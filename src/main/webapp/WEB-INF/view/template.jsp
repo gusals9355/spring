@@ -10,9 +10,9 @@
 <title>${title }</title>
 </head>
 <body>
-<%--	<header>--%>
-<%--		<jsp:include page="/WEB-INF/view/nav/${nav}.jsp" flush="false"></jsp:include>--%>
-<%--	</header>--%>
+	<header>
+		<jsp:include page="/WEB-INF/view/nav/${nav}.jsp" flush="false"></jsp:include>
+	</header>
 	<section>
 		<jsp:include page="/WEB-INF/view/${page}.jsp" flush="false"></jsp:include>
 	</section>
